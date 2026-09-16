@@ -27,3 +27,18 @@ Next.js, React, TypeScript, GSAP, Three.js and CSS.
 ## Performance choices
 
 The WebGL scene uses low-cost geometry, basic unlit materials and a capped device pixel ratio. All geometries, materials, animation frames, listeners and the renderer are disposed during cleanup. The mobile experience avoids a pinned horizontal scroll to preserve natural touch behaviour.
+
+## Lighthouse Performance
+
+The deployed production application was audited three times using Chrome Lighthouse in Incognito mode.
+
+| Category | Score |
+|---|---:|
+| Performance | 100 |
+| Accessibility | 95 |
+| Best Practices | 100 |
+| SEO | 100 |
+
+![FreightCore Lighthouse audit results](./public/lighthouse-report.png)
+
+The results demonstrate that the Three.js WebGL experience and GSAP scroll animations remain performant while maintaining strong accessibility, browser best-practice, and SEO standards.
