@@ -151,6 +151,41 @@ export default function Home() {
       </div>
     </section>
     <section className="cta-section" id="contact"><p className="kicker"><span/> Your next route starts here</p><h2>Move freight.<br/><em>Move forward.</em></h2><a className="cta-link" href="mailto:hello@freightcore.example">Plan your shipment <ArrowUpRight/></a></section>
-    <footer><a className="brand footer-brand" href="#top"><span className="brand-mark"><span/></span><span>FreightCore</span></a><p>Connected freight for a world in motion.</p><div><a href="#services">Services</a><a href="#network">Network</a><a href="#about">About</a></div><small>© 2026 FreightCore Logistics. Concept experience.</small></footer>
+    <footer>
+      <div className="footer-identity">
+        <a className="brand footer-brand" href="#top">
+          <span className="brand-mark">
+            <span />
+          </span>
+          <span>FreightCore</span>
+        </a>
+
+        <p>Connected freight for a world in motion.</p>
+      </div>
+
+      <address className="footer-contact">
+        <span>Get in touch</span>
+
+        <a href="mailto:hello@freightcore.com">
+          hello@freightcore.com
+        </a>
+
+        <a href="tel:+914448129080">
+          +91 44 4812 9080
+        </a>
+
+        <p>Chennai, India</p>
+      </address>
+
+      <nav className="footer-links" aria-label="Footer navigation">
+        <a href="#network">Network</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <small>
+        © 2026 FreightCore Logistics. Concept experience.
+      </small>
+    </footer>
   </main>;
 }
