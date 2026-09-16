@@ -83,11 +83,10 @@ export default function Home() {
         const target=Number(item.dataset.counter); const state={value:0};
         gsap.to(state,{ value:target,duration:1.6,ease:"power2.out",scrollTrigger:{trigger:item,start:"top 88%",once:true},onUpdate:()=>{item.textContent=Math.round(state.value).toString();} });
       });
-      const mm=gsap.matchMedia();
-      mm.add("(min-width: 900px)",()=>{
-        const track=document.querySelector<HTMLElement>(".service-track"); if(!track)return;
+      const track=document.querySelector<HTMLElement>(".service-track");
+      if(track){
         gsap.to(track,{ x:()=>-(track.scrollWidth-window.innerWidth),ease:"none",scrollTrigger:{trigger:".service-stage",start:"top top",end:()=>`+=${track.scrollWidth-window.innerWidth}`,scrub:0.8,pin:true,anticipatePin:1,invalidateOnRefresh:true} });
-      });
+      }
       gsap.utils.toArray<HTMLElement>(".reveal-block").forEach((block)=>{
         gsap.from(block,{y:42,opacity:0,duration:0.9,ease:"power3.out",scrollTrigger:{trigger:block,start:"top 84%"}});
       });
