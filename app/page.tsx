@@ -74,6 +74,13 @@ function NetworkScene() {
 export default function Home() {
   const pageRef=useRef<HTMLElement>(null);
   const [menuOpen,setMenuOpen]=useState(false);
+  const [scrolled,setScrolled]=useState(false);
+  useEffect(()=>{
+    const updateHeader=()=>setScrolled(window.scrollY>24);
+    updateHeader();
+    window.addEventListener("scroll",updateHeader,{passive:true});
+    return ()=>window.removeEventListener("scroll",updateHeader);
+  },[]);
   useEffect(()=>{
     gsap.registerPlugin(ScrollTrigger);
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -95,10 +102,10 @@ export default function Home() {
   },[]);
 
   return <main ref={pageRef}>
-    <header className="site-header">
+    <header className={`site-header${scrolled?" is-scrolled":""}${menuOpen?" is-menu-open":""}`}>
       <a className="brand" href="#top" aria-label="FreightCore home"><span className="brand-mark"><span /></span><span>FreightCore</span></a>
       <nav className={menuOpen?"nav-links is-open":"nav-links"} aria-label="Main navigation">
-        <a href="#services" onClick={()=>setMenuOpen(false)}>Services</a><a href="#network" onClick={()=>setMenuOpen(false)}>Network</a><a href="#about" onClick={()=>setMenuOpen(false)}>About</a>
+        <a href="#network" onClick={()=>setMenuOpen(false)}>Network</a><a href="#services" onClick={()=>setMenuOpen(false)}>Services</a><a href="#about" onClick={()=>setMenuOpen(false)}>About</a>
         <a className="nav-cta" href="#contact" onClick={()=>setMenuOpen(false)}>Start a shipment <ArrowUpRight size={16}/></a>
       </nav>
       <button className="menu-button" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={()=>setMenuOpen(o=>!o)}>{menuOpen?<X/>:<Menu/>}</button>
